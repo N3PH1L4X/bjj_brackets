@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetidorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/competidores', [CompetidorController::class, "index"])->name("competidor.index");
+Route::post('/addcompetidor', [CompetidorController::class,'add'])->name('competidor.add');
+Route::post('borrarcompetidor/{id}', [CompetidorController::class,'borrar'])->name('competidor.borrar');
+Route::post('editarcompetidor', [CompetidorController::class,'editar'])->name('competidor.editar');
+
+Route::get('/inscripciones', function () {
+    return view('inscripcion');
 });
