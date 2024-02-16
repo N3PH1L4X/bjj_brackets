@@ -1,9 +1,4 @@
-function actualizarTextoCargo(itemHTMLvisible, itemHTMLinvisible, textoObjetivoVisible, textoObjetivoInvisible) {
-    document.getElementById(itemHTMLvisible).innerText = textoObjetivoVisible;
-    document.getElementById(itemHTMLinvisible).value = textoObjetivoInvisible;
-}
-
-function actualizarTextoTurno(itemHTMLvisible, itemHTMLinvisible, textoObjetivoVisible, textoObjetivoInvisible) {
+function actualizarTextoEscuela(itemHTMLvisible, itemHTMLinvisible, textoObjetivoVisible, textoObjetivoInvisible) {
     document.getElementById(itemHTMLvisible).innerText = textoObjetivoVisible;
     document.getElementById(itemHTMLinvisible).value = textoObjetivoInvisible;
 }

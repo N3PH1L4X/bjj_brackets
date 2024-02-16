@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [CompetidorController::class, "index"])->name("competidor.index");
 Route::get('/competidores', [CompetidorController::class, "index"])->name("competidor.index");
 Route::post('/addcompetidor', [CompetidorController::class,'add'])->name('competidor.add');
 Route::post('borrarcompetidor/{id}', [CompetidorController::class,'borrar'])->name('competidor.borrar');

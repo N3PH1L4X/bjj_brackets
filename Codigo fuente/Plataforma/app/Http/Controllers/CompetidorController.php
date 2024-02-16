@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class CompetidorController extends Controller
 {
     public function index(){
 
-        $competidores = DB::table('competidor')->get();
+        $competidores = DB::table('competidor')
+        ->join('escuela', 'competidor.escuela_id_escuela', '=', 'escuela.id_escuela')
+        ->get();
 
-        return view('competidor', ['competidores' => $competidores]);
+        $escuelas = DB::table('escuela')->get();
+
+        return view('competidor', [
+            'competidores' => $competidores,
+            'escuelas' => $escuelas
+        ]);
 
     }
 
@@ -22,25 +28,22 @@ class CompetidorController extends Controller
         $nombres = $request->input('idnombres');
         $papellido = $request->input('idprimerap');
         $sapellido = $request->input('idsegundoap');
-        $idcargo = $request->input('inputcargoregistro');
-        $idturno = $request->input('inputturnoregistro');
+        $idescuela = $request->input('inputescuelaregistro');
+        $peso = $request->input('idpeso');
+        $edad = $request->input('idedad');
         $email = $request->input('idcorreo');
         $telefono = $request->input('idtelefono');
 
-        $respuestasolicitudes = Http::withHeaders(['Authorization' => 'cef0be1f-60d6-414e-a024-487fe6fff007'])->post('https://api.republicadebrasil.cl/api.php?numconsulta=205', [
-            'rutfuncionario' => $rut,
-            'nombrefuncionario' => $nombres,
-            'papellidofuncionario' => $papellido,
-            'sapellidofuncionario' => $sapellido,
-            'idcargo' => $idcargo,
-            'idturno' => $idturno,
-            'emailfuncionario' => $email,
-            'telefonofuncionario' => $telefono
-        ]);
-
-        DB::table('users')->insert([
-            'email' => 'kayla@example.com',
-            'votes' => 0
+        DB::table('competidor')->insert([
+            'rut_competidor' => $rut,
+            'nombre_competidor' => $nombres,
+            'primer_apellido_competidor' => $papellido,
+            'segundo_apellido_competidor' => $sapellido,
+            'peso_competidor' => $peso,
+            'edad_competidor' => $edad,
+            'escuela_id_escuela' => $idescuela,
+            'correo_competidor' => $email,
+            'telefono_competidor' => $telefono
         ]);
 
         return redirect('/competidores');
@@ -48,13 +51,10 @@ class CompetidorController extends Controller
 
     public function borrar(Request $request){
 
-        $idfuncionario = $request->id;
+        $idcompetidor = $request->id;
+        $idborrarcompetidor = DB::table('competidor')->where('id_competidor', '=', $idcompetidor)->delete();
 
-        $respuestasolicitudes = Http::withHeaders(['Authorization' => 'cef0be1f-60d6-414e-a024-487fe6fff007'])->post('https://api.republicadebrasil.cl/api.php?numconsulta=401', [
-            'idfuncionario' => $idfuncionario,
-        ]);
-
-        return redirect('/funcionarios');
+        return redirect('/competidores');
     }
 
     public function editar(Request $request){
@@ -64,24 +64,27 @@ class CompetidorController extends Controller
         $nombres = $request->input('editarnombres');
         $papellido = $request->input('editarpapellido');
         $sapellido = $request->input('editarsapellido');
-        $idcargo = $request->input('inputcargoeditar'.$id );
-        $idturno = $request->input('inputturnoeditar'.$id );
+        $idescuela = $request->input('inputescuelaeditar'.$id );
+        $peso = $request->input('editarpeso');
+        $edad = $request->input('editaredad');
         $email = $request->input('editaremail');
         $telefono = $request->input('editartelefono');
 
-        $respuestasolicitudes = Http::withHeaders(['Authorization' => 'cef0be1f-60d6-414e-a024-487fe6fff007'])->post('https://api.republicadebrasil.cl/api.php?numconsulta=305', [
-            'idfuncionario' => $id,
-            'rutfuncionario' => $rut,
-            'nombrefuncionario' => $nombres,
-            'papellidofuncionario' => $papellido,
-            'sapellidofuncionario' => $sapellido,
-            'idcargo' => $idcargo,
-            'idturno' => $idturno,
-            'emailfuncionario' => $email,
-            'telefonofuncionario' => $telefono
-        ]);
+        $editarregistro = DB::table('competidor')
+            ->where('id_competidor', $id)
+            ->update([
+                'rut_competidor' => $rut,
+                'nombre_competidor' => $nombres,
+                'primer_apellido_competidor' => $papellido,
+                'segundo_apellido_competidor' => $sapellido,
+                'peso_competidor' => $peso,
+                'edad_competidor' => $edad,
+                'escuela_id_escuela' => $idescuela,
+                'correo_competidor' => $email,
+                'telefono_competidor' => $telefono
+            ]);
 
-        return redirect('/funcionarios');
+        return redirect('/competidores');
     }
 
 }

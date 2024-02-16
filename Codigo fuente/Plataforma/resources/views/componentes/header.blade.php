@@ -23,7 +23,7 @@
 
         <nav class="navbar1">
             <div class="container">
-                <a href="{{ url('/dashboard') }}">Inicio</a>
+                <a href="{{-- url('/dashboard') --}}">Inicio</a>
                 @if(session('user_id'))
                     <div class="nombreusuario">
                         <p>¡Hola, {{ session('nombre') }}!</p>
@@ -34,23 +34,24 @@
 
         <nav class="navbar2">
             <div class="imagen">
-                <a href="{{ url('/dashboard') }}"><img src="{{ asset('/img/logo_colegio-removebg-preview.png') }}" alt="Logo"></a>
+                <a href="{{ url('/dashboard') }}"><img src="{{ asset('/img/logo.png') }}" alt="Logo"></a>
             </div>
             <div class="opciones">
                 <ul>
-                    <li><a href="{{ url('/dashboard') }}">Inicio</a></li>
+                    <li><a href="{{-- url('/dashboard') --}}">Inicio</a></li>
                     <li>
                         <div class="dropdown">
-                            <a class="dropbtn">Servicios</a>
+                            <a class="dropbtn">Herramientas</a>
                             <div class="dropdown-content" style="z-index: 999999999999999999999999">
-                                <a href="{{ url('/marcaciones') }}">Registro de asistencias</a>
-                                <a href="{{ url('/solicitudes') }}">Historial de solicitudes</a>
-                                <a href="{{ url('/funcionarios') }}">Lista de funcionarios</a>
+                                <a href="{{-- url('/eventos') --}}">Registro de eventos</a>
+                                <a href="{{-- url('/instructoresyescuelas') --}}">Instructores y escuelas</a>
+                                <a href="{{ url('/competidores') }}">Lista de competidores</a>
+                                <a href="{{-- url('/inscripciones') --}}">Inscripciones</a>
                             </div>
                         </div>
                     </li>
-                    <li><a href="{{ url('/ayuda') }}">Ayuda</a></li>
-                    <li><a href="{{ url('/login') }}">Salir</a></li>
+                    <li><a href="{{-- url('/ayuda') --}}">Ayuda</a></li>
+                    <li><a href="{{-- url('/login') --}}">Salir</a></li>
                 </ul>
             </div>
         </nav>

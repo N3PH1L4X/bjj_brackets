@@ -39,35 +39,28 @@
                             <label for="exampleInputEmail1" class="form-label">Telefono *</label>
                             <input placeholder="+56911223344" type="text" class="form-control" id="idtelefono" aria-describedby="telefonoHelp" name="idtelefono">
                         </div>
-                        <label class="form-label">Cargo</label>
-                        <div class="botonesformulario">
-                            <div class="dropdown-center">
-                                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Cargo *
-                                </button>
-                                <ul class="dropdown-menu">
-                                    {{-- @foreach ($cargos as $cargo)
-                                        <li id="{{ $cargo->id_cargo }}" class="dropdown-item" onclick="actualizarTextoCargo('cargoregistro', 'inputcargoregistro', '{{ $cargo->nomb_cargo }}', '{{ $cargo->id_cargo }}')">{{ $cargo->nomb_cargo }}</li>
-                                    @endforeach --}}
-                                </ul>
-                            </div>
-                            <p id="cargoregistro"></p>
-                            <input type="text" name="inputcargoregistro" id="inputcargoregistro" hidden>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Edad *</label>
+                            <input placeholder="25" type="text" class="form-control" id="idedad" aria-describedby="edadHelp" name="idedad">
                         </div>
-                        <label class="form-label">Turno</label>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Peso *</label>
+                            <input placeholder="70" type="text" class="form-control" id="idpeso" aria-describedby="pesoHelp" name="idpeso">
+                        </div>
+                        <label class="form-label">Escuela</label>
                         <div class="botonesformulario">
                             <div class="dropdown-center">
                                 <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Turno *
+                                  Escuela *
                                 </button>
                                 <ul class="dropdown-menu">
-                                    {{-- @foreach ($turnos as $turno)
-                                        <li id="{{ $turno->id_turno }}" class="dropdown-item" onclick="actualizarTextoTurno('turnoregistro', 'inputturnoregistro', '{{ $turno->hora_entrada_turno }} - {{ $turno->hora_salida_turno }}', '{{ $turno->id_turno }}')">{{ $turno->hora_entrada_turno }} - {{ $turno->hora_salida_turno }}</li>
-                                    @endforeach --}}
+                                    @foreach ($escuelas as $escuela)
+                                        <li id="{{ $escuela->id_escuela }}" class="dropdown-item" onclick="actualizarTextoEscuela('escuelaregistro', 'inputescuelaregistro', '{{ $escuela->nombre_escuela }}', '{{ $escuela->id_escuela }}')">{{ $escuela->nombre_escuela }}</li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            <p id="turnoregistro"></p>
-                            <input type="text" name="inputturnoregistro" id="inputturnoregistro" hidden>
+                            <p id="escuelaregistro"></p>
+                            <input type="text" name="inputescuelaregistro" id="inputescuelaregistro" hidden>
                         </div>
                     </form>
                 </div>
@@ -99,12 +92,10 @@
         <table class="tabla table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">RUT</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Peso</th>
-                    <th scope="col">Cinturon</th>
                     <th scope="col">Edad</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Telefono</th>
@@ -115,16 +106,14 @@
             <tbody id="cuerpotabla">
                 @foreach ($competidores as $competidor)
                     <tr>
-                        <th scope="row">{{ $competidor->id_competidor }}</th>
                         <td>{{ $competidor->rut_competidor }}</td>
                         <td>{{ $competidor->nombre_competidor }}</td>
                         <td>{{ $competidor->primer_apellido_competidor }} {{ $competidor->segundo_apellido_competidor }}</td>
                         <td>{{ $competidor->peso_competidor }}</td>
-                        <td>{{ $competidor->cinturon_competidor }}</td>
                         <td>{{ $competidor->edad_competidor }}</td>
                         <td>{{ $competidor->correo_competidor }}</td>
                         <td>{{ $competidor->telefono_competidor }}</td>
-                        <td>{{ $competidor->escuela_id_escuela }}</td>
+                        <td>{{ $competidor->nombre_escuela }}</td>
                         <td>
                             <div class="botonestablacompetidors">
                                 <button class="btn btn-warning btn-sm"  data-bs-toggle="modal" data-bs-target="#modalEditar{{ $competidor->id_competidor }}" href="#">
@@ -168,6 +157,14 @@
                                                 <input value="{{ $competidor->segundo_apellido_competidor }}" placeholder="Aguilar" type="text" class="form-control" id="editarsapellido" aria-describedby="sapellidoHelp" name="editarsapellido">
                                             </div>
                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Edad *</label>
+                                                <input value="{{ $competidor->edad_competidor }}" placeholder="25" type="text" class="form-control" id="editaredad" aria-describedby="edadHelp" name="editaredad">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Peso *</label>
+                                                <input value="{{ $competidor->peso_competidor }}" placeholder="70,2" type="text" class="form-control" id="editarpeso" aria-describedby="pesoHelp" name="editarpeso">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Correo electronico *</label>
                                                 <input value="{{ $competidor->correo_competidor }}" placeholder="ejemplo@correo.com" type="email" class="form-control" id="editaremail" aria-describedby="correoHelp" name="editaremail">
                                             </div>
@@ -175,35 +172,20 @@
                                                 <label for="exampleInputEmail1" class="form-label">Telefono *</label>
                                                 <input value="{{ $competidor->telefono_competidor }}" placeholder="+56911223344" type="text" class="form-control" id="editartelefono" aria-describedby="telefonoHelp" name="editartelefono">
                                             </div>
-                                            <label class="form-label">Cargo</label>
+                                            <label class="form-label">Escuela</label>
                                             <div class="botonesformulario">
                                                 <div class="dropdown-center">
                                                     <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                      Cargo *
+                                                      Escuela *
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        {{-- @foreach ($cargos as $cargo)
-                                                            <li id="{{ $cargo->id_cargo }}" class="dropdown-item" onclick="actualizarTextoCargo('cargoeditar{{ $competidor->id_competidor }}', 'inputcargoeditar{{ $competidor->id_competidor }}', '{{ $cargo->nomb_cargo }}', '{{ $cargo->id_cargo }}')">{{ $cargo->nomb_cargo }}</li>
-                                                        @endforeach --}}
+                                                        @foreach ($escuelas as $escuela)
+                                                            <li id="{{ $escuela->id_escuela }}" class="dropdown-item" onclick="actualizarTextoEscuela('cargoeditar{{ $competidor->id_competidor }}', 'inputescuelaeditar{{ $competidor->id_competidor }}', '{{ $escuela->nombre_escuela }}', '{{ $escuela->id_escuela }}')">{{ $escuela->nombre_escuela }}</li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
-                                                {{-- <p id="cargoeditar{{ $competidor->id_competidor }}">{{ $competidor->nomb_cargo }}</p>
-                                                <input value="{{ $cargo->id_cargo }}" type="text" name="inputcargoeditar{{ $competidor->id_competidor }}" id="inputcargoeditar{{ $competidor->id_competidor }}" hidden> --}}
-                                            </div>
-                                            <label class="form-label">Turno</label>
-                                            <div class="botonesformulario">
-                                                <div class="dropdown-center">
-                                                    <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                      Turno *
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        {{-- @foreach ($turnos as $turno)
-                                                            <li id="{{ $turno->id_turno }}" class="dropdown-item" onclick="actualizarTextoTurno('turnoeditar{{ $competidor->id_competidor }}', 'inputturnoeditar{{ $competidor->id_competidor }}', '{{ $turno->hora_entrada_turno }} - {{ $turno->hora_salida_turno }}', '{{ $turno->id_turno }}')">{{ $turno->hora_entrada_turno }} - {{ $turno->hora_salida_turno }}</li>
-                                                        @endforeach --}}
-                                                    </ul>
-                                                </div>
-                                                {{-- <p id="turnoeditar{{ $competidor->id_competidor }}">{{ $competidor->hora_entrada_turno }} - {{ $competidor->hora_salida_turno }}</p>
-                                                <input value="{{ $competidor->id_turno }}" type="text" name="inputturnoeditar{{ $competidor->id_competidor }}" id="inputturnoeditar{{ $competidor->id_competidor }}" hidden> --}}
+                                                <p id="cargoeditar{{ $competidor->id_competidor }}">{{ $competidor->nombre_escuela }}</p>
+                                                <input value="{{ $competidor->escuela_id_escuela }}" type="text" name="inputescuelaeditar{{ $competidor->id_competidor }}" id="inputescuelaeditar{{ $competidor->id_competidor }}" hidden>
                                             </div>
                                             <input value="{{ $competidor->id_competidor }}" type="text" name="inputeditarid" id="inputeditarid" hidden>
                                         </form>
