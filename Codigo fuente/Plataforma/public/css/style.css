@@ -315,3 +315,9 @@ body {
 #tablatopjustificaciones {
     width: 100%;
 }
+
+#escudoescuelas {
+    height: 70px;
+    width: 100%;
+    object-fit: contain;
+}

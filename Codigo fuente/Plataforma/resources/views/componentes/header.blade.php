@@ -44,7 +44,8 @@
                             <a class="dropbtn">Herramientas</a>
                             <div class="dropdown-content" style="z-index: 999999999999999999999999">
                                 <a href="{{-- url('/eventos') --}}">Registro de eventos</a>
-                                <a href="{{-- url('/instructoresyescuelas') --}}">Instructores y escuelas</a>
+                                <a href="{{ url('/instructores') }}">Instructores</a>
+                                <a href="{{ url('/escuelas') }}">Escuelas</a>
                                 <a href="{{ url('/competidores') }}">Lista de competidores</a>
                                 <a href="{{-- url('/inscripciones') --}}">Inscripciones</a>
                             </div>
