@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompetidorController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\EscuelaController;
+use App\Http\Controllers\EventoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,8 @@ Route::get('/escuelas', [EscuelaController::class, "index"])->name("escuela.inde
 Route::post('/addescuela', [EscuelaController::class,'add'])->name('escuela.add');
 Route::post('borrarescuela/{id}', [EscuelaController::class,'borrar'])->name('escuela.borrar');
 Route::post('editarescuela', [EscuelaController::class,'editar'])->name('escuela.editar');
+
+Route::get('/eventos', [EventoController::class, "index"])->name("evento.index");
+Route::post('/addevento', [EventoController::class,'add'])->name('evento.add');
+// Route::post('borrarevento/{id}', [EventoController::class,'borrar'])->name('evento.borrar');
+Route::post('editarevento', [EventoController::class,'editar'])->name('evento.editar');

@@ -84,7 +84,7 @@
             <div class="buscador">
                 <h2>Buscar</h2>
                 <p>Filtro 1:</p>
-                <input class="form-control inputbuscador" id="myInput1" type="text" placeholder="Buscar nombre, rut,...">
+                <input class="form-control inputbuscador" id="myInput1" type="text" placeholder="Buscar nombre, rut, escuela...">
             </div>
 
         </div>
