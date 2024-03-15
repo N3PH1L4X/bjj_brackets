@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="{{ asset('/img/favicon.ico') }}">
     <title>Inicio</title>
 
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
@@ -34,7 +35,7 @@
 
         <nav class="navbar2">
             <div class="imagen">
-                <a href="{{ url('/dashboard') }}"><img src="{{ asset('/img/logo.png') }}" alt="Logo"></a>
+                <a href="{{-- url('/dashboard') --}}"><img src="{{ asset('/img/logo.png') }}" alt="Logo"></a>
             </div>
             <div class="opciones">
                 <ul>
@@ -44,9 +45,10 @@
                             <a class="dropbtn">Herramientas</a>
                             <div class="dropdown-content" style="z-index: 999999999999999999999999">
                                 <a href="{{ url('/eventos') }}">Registro de eventos</a>
+                                <a href="{{ url('/competidores') }}">Lista de competidores</a>
                                 <a href="{{ url('/instructores') }}">Instructores</a>
                                 <a href="{{ url('/escuelas') }}">Escuelas</a>
-                                <a href="{{ url('/competidores') }}">Lista de competidores</a>
+                                <a href="{{ url('/deportesycategorias') }}">Deportes y categorias</a>
                                 <a href="{{-- url('/inscripciones') --}}">Inscripciones</a>
                             </div>
                         </div>
