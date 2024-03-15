@@ -18,10 +18,10 @@ El proyecto aún se encuentra en desarrollo, sin embargo en su estado actual es 
 - Creacion de nuevos eventos
 - Clasificación de eventos según deporte y estado
 - Diseño del frontend
+- Secciones para añadir nuevos deportes, categorías
 
 ### Por hacer
 - Inicio de sesión en la plataforma
-- Secciones para añadir nuevos deportes, categorías
 - Registrar inscripciones de competidores en eventos creados
 - Generar llaves de torneo segun categorias de peso, edad, cinturón, etc
 
