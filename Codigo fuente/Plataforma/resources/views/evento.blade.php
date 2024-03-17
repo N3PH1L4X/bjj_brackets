@@ -128,12 +128,12 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         @foreach ($deportes as $deporte)
-                                                            <li id="{{ $deporte->id_deporte }}" class="dropdown-item" onclick="actualizarTextoEscuela('editareventodeporte', 'inputdeporteeditar', '{{ $deporte->id_deporte }} - {{ $deporte->nombre_deporte }}', '{{ $deporte->id_deporte }}')">{{ $deporte->id_deporte }} - {{ $deporte->nombre_deporte }}</li>
+                                                            <li id="{{ $deporte->id_deporte }}" class="dropdown-item" onclick="actualizarTextoEscuela('editareventodeporte{{ $evento->id_evento }}', 'inputdeporteeditar{{ $evento->id_evento }}', '{{ $deporte->id_deporte }} - {{ $deporte->nombre_deporte }}', '{{ $deporte->id_deporte }}')">{{ $deporte->id_deporte }} - {{ $deporte->nombre_deporte }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
-                                                <p id="editareventodeporte">{{ $evento->id_deporte }} - {{ $evento->nombre_deporte }}</p>
-                                                <input value="{{ $evento->id_deporte }}" type="text" name="inputdeporteeditar" id="inputdeporteeditar" hidden>
+                                                <p id="editareventodeporte{{ $evento->id_evento }}">{{ $evento->id_deporte }} - {{ $evento->nombre_deporte }}</p>
+                                                <input value="{{ $evento->id_deporte }}" type="text" name="inputdeporteeditar{{ $evento->id_evento }}" id="inputdeporteeditar{{ $evento->id_evento }}" hidden>
                                             </div>
                                             <label class="form-label">Estado del evento</label>
                                             <div class="botonesformulario">
@@ -143,12 +143,12 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         @foreach ($estados_evento as $estado_evento)
-                                                            <li id="{{ $estado_evento->id_estado_evento }}" class="dropdown-item" onclick="actualizarTextoEscuela('editareventoestado', 'inputestadoeditar', '{{ $estado_evento->nombre_estado_evento }}', '{{ $estado_evento->id_estado_evento }}')">{{ $estado_evento->nombre_estado_evento }}</li>
+                                                            <li id="{{ $estado_evento->id_estado_evento }}" class="dropdown-item" onclick="actualizarTextoEscuela('editareventoestado{{ $evento->id_evento }}', 'inputestadoeditar{{ $evento->id_evento }}', '{{ $estado_evento->nombre_estado_evento }}', '{{ $estado_evento->id_estado_evento }}')">{{ $estado_evento->nombre_estado_evento }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
-                                                <p id="editareventoestado">{{ $evento->nombre_estado_evento }}</p>
-                                                <input value="{{ $evento->id_estado_evento }}" type="text" name="inputestadoeditar" id="inputestadoeditar" hidden>
+                                                <p id="editareventoestado{{ $evento->id_evento }}">{{ $evento->nombre_estado_evento }}</p>
+                                                <input value="{{ $evento->id_estado_evento }}" type="text" name="inputestadoeditar{{ $evento->id_evento }}" id="inputestadoeditar{{ $evento->id_evento }}" hidden>
                                             </div>
                                             <input value="{{ $evento->id_evento }}" type="text" name="inputeditarid" id="inputeditarid" hidden>
                                         </form>

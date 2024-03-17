@@ -90,8 +90,8 @@ class EventoController extends Controller
         $editarnombreevento = $request->input('editarnombreevento');
         $editarfechainicio = $request->input('editarfechainicio');
         $editarfechacierre = $request->input('editarfechacierre');
-        $editarsdisciplina = $request->input('inputdeporteeditar');
-        $editarestadoevento = $request->input('inputestadoeditar');
+        $editarsdisciplina = $request->input('inputdeporteeditar' . $id);
+        $editarestadoevento = $request->input('inputestadoeditar' . $id);
 
         DB::table('evento')
             ->where('id_evento', $id)

@@ -16,6 +16,13 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+
     <script src="{{ asset('/js/highcharts.js') }}"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
 </head>
@@ -49,7 +56,7 @@
                                 <a href="{{ url('/instructores') }}">Instructores</a>
                                 <a href="{{ url('/escuelas') }}">Escuelas</a>
                                 <a href="{{ url('/deportesycategorias') }}">Deportes y categorias</a>
-                                <a href="{{-- url('/inscripciones') --}}">Inscripciones</a>
+                                <a href="{{ url('/inscripciones') }}">Inscripciones</a>
                             </div>
                         </div>
                     </li>

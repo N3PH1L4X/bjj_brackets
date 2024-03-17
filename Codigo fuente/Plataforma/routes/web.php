@@ -5,6 +5,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\DeporteCategoriaController;
+use App\Http\Controllers\InscripcionController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,10 @@ Route::post('/addcategoria', [DeporteCategoriaController::class,'categoriaadd'])
 // Route::post('borrardeporte/{id}', [DeporteCategoriaController::class,'deporteborrar'])->name('deportcateg.deporteborrar');
 // Route::post('borrarcategoria/{id}', [DeporteCategoriaController::class,'categoriaborrar'])->name('deportcateg.categoriaborrar');
 // Route::post('editarescuela', [DeporteCategoriaController::class,'editar'])->name('deportcateg.editar');
+
+Route::get('/inscripciones', [InscripcionController::class, "index"])->name("inscripcion.index");
+Route::get('/obtenereventos', [InscripcionController::class, "obtenereventos"])->name("inscripcion.obtenereventos");
+Route::get('/obtenercategorias/{idevento}', [InscripcionController::class, "obtenercategorias"])->name("inscripcion.obtenercategorias");
+Route::post('/addinscripcion', [InscripcionController::class,'add'])->name('inscripcion.add');
+Route::post('borrarinscripcion/{id}', [InscripcionController::class,'borrar'])->name('inscripcion.borrar');
+Route::post('/editarinscripcion', [InscripcionController::class,'editar'])->name('inscripcion.editar');
