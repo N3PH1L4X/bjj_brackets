@@ -19,11 +19,12 @@ El proyecto aún se encuentra en desarrollo, sin embargo en su estado actual es 
 - Clasificación de eventos según deporte y estado
 - Diseño del frontend
 - Secciones para añadir nuevos deportes, categorías
+- Registrar inscripciones de competidores en eventos creados
 
 ### Por hacer
 - Inicio de sesión en la plataforma
-- Registrar inscripciones de competidores en eventos creados
 - Generar llaves de torneo segun categorias de peso, edad, cinturón, etc
+- Error handling
 
 ## Modelo de datos
 ![MER](https://github.com/N3PH1L4X/bjj_brackets/assets/71483185/3a2f0843-4401-4f60-a212-f6a1122ce521)
